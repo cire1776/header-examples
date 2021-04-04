@@ -6,7 +6,15 @@ import {
   faShoppingCart,
   faChevronRight,
   faChevronDown,
+  faCaretRight,
+  faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTwitter,
+  faFacebook,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
+
 import mesh from "../images/pexels-photo-3636718.jpeg";
 
 import "./main.scss";
@@ -23,6 +31,13 @@ const MENUS = {
   ],
 };
 
+const MENUS_2 = {
+  About: null,
+  "Our Services": ["Window Washing", "Laundry", "Dusting"],
+  Pricing: null,
+  "Contact Us": ["E-Mail", "Call us"],
+};
+
 // markup
 const IndexPage = () => {
   const [activeSubmenu, setActiveSubmenu] = useState(null);
@@ -31,6 +46,7 @@ const IndexPage = () => {
   const menuElement = useRef(null);
   const subMenus = useRef(null);
   const clickArea = useRef(null);
+  const menuElement2 = useRef(null);
 
   React.useEffect(() => {}, [showMenus, activeSubmenu]);
 
@@ -98,6 +114,20 @@ const IndexPage = () => {
     );
   }
 
+  function generateSubmenu2(submenu) {
+    if (!submenu) {
+      return;
+    }
+
+    return (
+      <ul className="submenu">
+        {submenu.map((menu) => {
+          return <li>{menu}</li>;
+        })}
+      </ul>
+    );
+  }
+
   function toggleMenu(event) {
     menuFlag.current.classList.toggle("slid");
   }
@@ -124,6 +154,10 @@ const IndexPage = () => {
     }
   }
 
+  function toggleMenus2(event) {
+    menuElement2.current.classList.toggle("shown");
+  }
+
   return (
     <main>
       <section
@@ -132,7 +166,7 @@ const IndexPage = () => {
         // onMouseOver={(event) => closeMenu(event)}
         ref={clickArea}
       >
-        <h1>Heading Example One</h1>
+        <h1>Header Example One</h1>
         <header className="" ref={menuFlag}>
           <img src={logo} className="logo" alt="stylized pegasus" />
           <h1>
@@ -195,6 +229,66 @@ const IndexPage = () => {
                 <li key="login">Login</li>
               </ul>
               <hr />
+            </section>
+          </nav>
+        </header>
+        <img src={mesh} alt="view through lattice window" />
+      </section>
+
+      <section className="header-2">
+        <h1>Header Example Two</h1>
+        <header>
+          <figure>
+            <img src={logo} className="logo other" alt="stylized pegasus" />
+            <h1>
+              Alpha-Pegasus <br />
+              <span>Media</span>
+            </h1>
+          </figure>
+          <nav>
+            <i className="hamburger" onClick={toggleMenus2}>
+              <span className="top-bar"></span>
+              <span className="middle-bar"></span>
+              <span className="bottom-bar"></span>
+            </i>
+            <section className="menus" ref={menuElement2}>
+              <ul className="main-menu">
+                {Object.entries(MENUS_2).map(([menu, submenu]) => {
+                  return (
+                    <li key={menu}>
+                      {menu}{" "}
+                      {submenu ? (
+                        <>
+                          <FontAwesomeIcon
+                            className="caret-right"
+                            icon={faCaretRight}
+                            size="1x"
+                          />
+                          <FontAwesomeIcon
+                            className="caret-down"
+                            icon={faCaretDown}
+                            size="1x"
+                          />
+                        </>
+                      ) : (
+                        ""
+                      )}
+                      {generateSubmenu2(submenu)}
+                    </li>
+                  );
+                })}
+              </ul>
+              <ul className="social-menu">
+                <li>
+                  <FontAwesomeIcon icon={faTwitter} size="1x" />
+                </li>
+                <li>
+                  <FontAwesomeIcon icon={faFacebook} size="1x" />
+                </li>
+                <li>
+                  <FontAwesomeIcon icon={faYoutube} size="1x" />
+                </li>
+              </ul>
             </section>
           </nav>
         </header>
