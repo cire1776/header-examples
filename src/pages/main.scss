@@ -210,10 +210,13 @@ section.header-1 {
       width: 23px;
     }
 
-    .shopping-cart {
+    .special-menu {
       float: right;
       margin-right: 1rem;
       cursor: pointer;
+      a {
+        color: black;
+      }
     }
 
     .menus {
@@ -347,6 +350,12 @@ section.header-1 {
           }
         }
 
+        .expanded-menu {
+          li:hover a {
+            border-bottom: 1px solid black;
+          }
+        }
+
         .submenu.shown {
           display: none;
         }
@@ -445,6 +454,7 @@ section.header-1 {
     }
   }
 }
+
 /*
 *
 *   header 2
@@ -575,6 +585,7 @@ section.header-2 {
               width: 10rem;
               padding: 0.75rem;
               background-color: white;
+              color: black;
             }
           }
           & li {
@@ -625,16 +636,25 @@ section.header-2 {
           width: 100%;
           height: 50%;
           flex-direction: column;
+
+          li > a {
+            color: white;
+          }
         }
 
         .social-menu {
           position: relative;
           top: 7rem;
           left: 0;
+
+          > li a {
+            color: white;
+          }
         }
 
         .social-menu,
         .main-menu {
+          & > li:hover > a,
           & > li:hover {
             color: goldenrod;
           }
@@ -645,11 +665,12 @@ section.header-2 {
         }
 
         .submenu {
-          & > li {
+          & > li a {
             color: black;
           }
 
-          li:hover {
+          & li:hover a,
+          & li:hover {
             color: goldenrod;
           }
         }
@@ -694,14 +715,21 @@ section.header-2 {
                 display: none !important;
               }
             }
+            & > li:hover > a {
+              color: goldenrod;
+            }
 
             .submenu {
               top: 2rem !important;
               left: 0 !important;
               color: black !important;
 
-              & > li:hover {
+              li:hover > a {
                 color: goldenrod;
+              }
+
+              a {
+                color: black;
               }
             }
 
@@ -722,8 +750,36 @@ section.header-2 {
             top: 2.5rem;
             margin-right: 4rem;
             margin-left: auto;
+
+            li:hover a {
+              color: goldenrod !important;
+            }
           }
         }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  header {
+    nav {
+      padding-right: 2rem !important;
+    }
+
+    br {
+      display: none;
+    }
+    figure {
+      padding-left: 1.5rem;
+      width: 24rem !important;
+    }
+    .menus {
+      width: 550px;
+      left: 23rem !important;
+
+      .main-menu {
+        width: 550px;
       }
     }
   }
