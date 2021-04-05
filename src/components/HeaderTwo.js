@@ -17,7 +17,7 @@ const SOCIAL_ICONS = {
   youtube: <FontAwesomeIcon icon={faYoutube} size="1x" />,
 };
 
-const HeaderTwo = ({ menus, socialMenus }) => {
+const HeaderTwo = ({ menus, socialMenus, children }) => {
   const menuElement2 = useRef(null);
 
   React.useEffect(() => {
@@ -60,13 +60,7 @@ const HeaderTwo = ({ menus, socialMenus }) => {
 
   return (
     <header>
-      <figure>
-        <img src={logo} className="logo other" alt="stylized pegasus" />
-        <h1>
-          Alpha-Pegasus <br />
-          <span>Media</span>
-        </h1>
-      </figure>
+      {children}
       <nav>
         <i
           className="hamburger"

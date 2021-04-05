@@ -3,6 +3,7 @@ import React from "react";
 import mesh from "../images/pexels-photo-3636718.jpeg";
 import HeaderOne from "../components/HeaderOne";
 import HeaderTwo from "../components/HeaderTwo";
+import logo from "../images/apmlogo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import "./main.scss";
@@ -77,13 +78,26 @@ const IndexPage = () => {
           secondary={SECONDARY_MENU}
           tertiary={TERTIARY_MENU}
           special={SPECIAL}
-        />
+        >
+          <img src={logo} className="logo" alt="stylized pegasus" />
+          <h1>
+            Alpha-Pegasus <span>Media</span>
+          </h1>
+        </HeaderOne>
         <img src={mesh} alt="a view through a lattice window" />
       </section>
 
       <section className="header-2">
         <h1>Header Example Two</h1>
-        <HeaderTwo menus={MENUS_2} socialMenus={SOCIAL} />
+        <HeaderTwo menus={MENUS_2} socialMenus={SOCIAL}>
+          <figure>
+            <img src={logo} className="logo other" alt="stylized pegasus" />
+            <h1>
+              Alpha-Pegasus <br />
+              <span>Media</span>
+            </h1>
+          </figure>
+        </HeaderTwo>
         <img src={mesh} alt="a view through a lattice window" />
       </section>
     </main>

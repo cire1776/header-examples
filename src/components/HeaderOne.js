@@ -25,7 +25,7 @@ import "../pages/main.scss";
     the menu, typically an icon, that is always
     displayed in the header.
 */
-const HeaderOne = ({ menus, secondary, tertiary, special }) => {
+const HeaderOne = ({ menus, secondary, tertiary, special, children }) => {
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const showMenus = useState(false)[0];
   const menuFlag = useRef(null);
@@ -105,10 +105,7 @@ const HeaderOne = ({ menus, secondary, tertiary, special }) => {
 
   return (
     <header className="" ref={menuFlag}>
-      <img src={logo} className="logo" alt="stylized pegasus" />
-      <h1>
-        Alpha-Pegasus <span>Media</span>
-      </h1>
+      {children}
       <nav>
         <i className="navbar-switch" onClick={toggleMenu}>
           <span className="icon-bar top-bar"></span>
