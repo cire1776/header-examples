@@ -49,7 +49,7 @@ header.header-4 {
     display: none;
     color: white;
     width: 200px;
-    margin: 4rem 1rem;
+    margin: 1rem 1rem;
 
     li {
       line-height: 1.5rem;
@@ -65,6 +65,25 @@ header.header-4 {
 
       .submenu li a:hover {
         color: goldenrod;
+      }
+    }
+
+    .social-menu {
+      display: flex;
+      justify-content: center;
+      margin-top: 4rem;
+
+      li {
+        & + li {
+          margin-left: 1rem;
+        }
+        a {
+          color: white;
+        }
+
+        a:hover {
+          color: goldenrod;
+        }
       }
     }
   }

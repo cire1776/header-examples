@@ -122,7 +122,7 @@ const IndexPage = () => {
 
       <section className="header-4">
         <h1>Header Example Four</h1>
-        <HeaderFour menus={MENUS} socialMenus={SOCIAL}>
+        <HeaderFour menus={MENUS} socialMenu={SOCIAL}>
           <figure>
             <img src={logo} alt="a stylized pegasus" />
             <h1>

@@ -4,7 +4,7 @@ import Hamburger from "./Hamburger";
 
 import "./header4.scss";
 
-function HeaderFour({ children, menus, socialMenus }) {
+function HeaderFour({ children, menus, socialMenu }) {
   return (
     <header className="header-4">
       <aside>{children}</aside>
@@ -19,6 +19,11 @@ function HeaderFour({ children, menus, socialMenus }) {
                   {generateSubmenu(submenu)}
                 </li>
               );
+            })}
+          </ul>
+          <ul className="social-menu">
+            {socialMenu.map(([menu, link]) => {
+              return <li>{createLink(menu, link)}</li>;
             })}
           </ul>
         </section>
