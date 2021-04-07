@@ -1,6 +1,7 @@
 import React from "react";
 import "./header3.scss";
 import { createLink, generateSubmenu } from "./header_common";
+import Hamburger from "./Hamburger";
 
 function HeaderThree({ menus, specialItem, children }) {
   const [windowSize, setWindowSize] = React.useState(null);
@@ -8,6 +9,9 @@ function HeaderThree({ menus, specialItem, children }) {
 
   function toggleMenus(event) {
     menuElement.current.classList.toggle("shown");
+
+    // always show hamburger not X
+    return false;
   }
 
   React.useEffect(() => {}, [windowSize]);
@@ -28,17 +32,7 @@ function HeaderThree({ menus, specialItem, children }) {
     <header className="header-3">
       {children}
       <nav>
-        <i
-          className="hamburger"
-          onClick={toggleMenus}
-          onKeyDown={toggleMenus}
-          role="button"
-          tabIndex={0}
-        >
-          <span className="top-bar"></span>
-          <span className="middle-bar"></span>
-          <span className="bottom-bar"></span>
-        </i>
+        <Hamburger action={toggleMenus} />
         <section className="menus" ref={menuElement}>
           <ul className="main-menu">
             {Object.entries(menus).map(([menuItem, submenu]) => {

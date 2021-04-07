@@ -57,42 +57,14 @@ header.header-3 {
 
     .hamburger {
       position: absolute;
-      right: 0;
-      top: 2.5rem;
+      right: 2rem;
+      top: 2.6rem;
 
-      margin-top: 0.5rem;
-      margin-right: 0.5rem;
-
-      width: 30px;
-      height: 30px;
-
-      float: right;
-      background-color: transparent;
-      cursor: pointer;
-
-      .top-bar,
-      .middle-bar,
-      .bottom-bar {
-        position: absolute;
-        height: 4px;
-        width: 30px;
-        right: 1rem;
-        border-radius: 2.5px;
+      span {
         background-color: white;
       }
-
-      .top-bar {
-        top: 4px;
-      }
-
-      .middle-bar {
-        top: 12px;
-      }
-
-      .bottom-bar {
-        top: 20px;
-      }
     }
+
     .menus {
       display: flex;
       position: absolute;
