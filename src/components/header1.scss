@@ -137,28 +137,6 @@ header.header-1 {
   nav {
     flex-grow: 1;
     padding-right: 2rem;
-
-    .navbar-switch {
-      position: relative;
-      float: right;
-      cursor: pointer;
-    }
-  }
-
-  .top-bar,
-  .bottom-bar,
-  .middle-bar {
-    display: block;
-    background-color: #333;
-    height: 4px;
-    width: 30px;
-    margin-top: 5px;
-    border-radius: 2.5px;
-    transition: all 1s;
-  }
-
-  .middle-bar {
-    width: 23px;
   }
 
   .special-menu {
@@ -346,10 +324,6 @@ header.header-1 {
     nav {
       flex-grow: 1;
       padding-right: 2rem;
-
-      .navbar-switch {
-        display: none;
-      }
 
       .menus {
         display: flex !important;

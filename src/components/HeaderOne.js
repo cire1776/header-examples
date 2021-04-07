@@ -5,7 +5,7 @@ import {
   faChevronRight,
   faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
-
+import Hamburger from "./Hamburger";
 import "./header1.scss";
 
 /*
@@ -40,6 +40,12 @@ const HeaderOne = ({ menus, secondary, tertiary, special, children }) => {
       window.removeEventListener("resize", detectWindowChange);
     };
   }, []);
+
+  function toggleMenu() {
+    const classList = menuFlag.current.classList;
+    classList.toggle("slid");
+    return classList.contains("slid");
+  }
 
   function createLink(title, link) {
     if (link.includes(":")) {
@@ -83,10 +89,6 @@ const HeaderOne = ({ menus, secondary, tertiary, special, children }) => {
     );
   }
 
-  function toggleMenu(event) {
-    menuFlag.current.classList.toggle("slid");
-  }
-
   function toggleSubmenu(event) {
     event.preventDefault();
     const menuName = event.target.innerText;
@@ -102,17 +104,7 @@ const HeaderOne = ({ menus, secondary, tertiary, special, children }) => {
     <header className="header-1" ref={menuFlag}>
       {children}
       <nav>
-        <i
-          className="navbar-switch"
-          onClick={toggleMenu}
-          onKeyDown={toggleMenu}
-          role="button"
-          tabIndex={0}
-        >
-          <span className="top-bar"></span>
-          <span className="middle-bar"></span>
-          <span className="bottom-bar"></span>
-        </i>
+        <Hamburger action={toggleMenu} />
         <figure className="special-menu condensed-only">
           {createLink(special[0], special[1])}
         </figure>
