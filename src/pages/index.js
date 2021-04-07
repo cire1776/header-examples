@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./main.scss";
+
 import mesh from "../images/pexels-photo-3636718.jpeg";
 import HeaderOne from "../components/HeaderOne";
 import HeaderTwo from "../components/HeaderTwo";
