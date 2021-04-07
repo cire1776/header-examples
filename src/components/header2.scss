@@ -64,40 +64,46 @@ header.header-2 {
 
     .hamburger {
       position: relative;
-      margin-top: 0.5rem;
-      margin-right: 0.5rem;
-
-      width: 30px;
-      height: 30px;
-
-      float: right;
-      color: black;
-      background-color: transparent;
-      cursor: pointer;
-
-      .top-bar,
-      .middle-bar,
-      .bottom-bar {
-        position: absolute;
-        height: 4px;
-        width: 30px;
-        right: 1rem;
-        border-radius: 2.5px;
-        background-color: black;
-      }
-
-      .top-bar {
-        top: 4px;
-      }
-
-      .middle-bar {
-        top: 12px;
-      }
-
-      .bottom-bar {
-        top: 20px;
-      }
+      top: 0.5rem;
+      margin-right: 2rem;
     }
+
+    // .hamburger {
+    //   position: relative;
+    //   margin-top: 0.5rem;
+    //   margin-right: 0.5rem;
+
+    //   width: 30px;
+    //   height: 30px;
+
+    //   float: right;
+    //   color: black;
+    //   background-color: transparent;
+    //   cursor: pointer;
+
+    //   .top-bar,
+    //   .middle-bar,
+    //   .bottom-bar {
+    //     position: absolute;
+    //     height: 4px;
+    //     width: 30px;
+    //     right: 1rem;
+    //     border-radius: 2.5px;
+    //     background-color: black;
+    //   }
+
+    //   .top-bar {
+    //     top: 4px;
+    //   }
+
+    //   .middle-bar {
+    //     top: 12px;
+    //   }
+
+    //   .bottom-bar {
+    //     top: 20px;
+    //   }
+    // }
 
     .menus {
       display: none;

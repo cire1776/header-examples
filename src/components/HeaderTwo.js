@@ -6,6 +6,7 @@ import {
   faFacebook,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
+import Hamburger from "./Hamburger";
 
 import "./header2.scss";
 import { createLink } from "./header_common";
@@ -46,23 +47,14 @@ const HeaderTwo = ({ menus, socialMenus, children }) => {
 
   function toggleMenus(event) {
     menuElement2.current.classList.toggle("shown");
+    return menuElement2.current.classList.contains("shown");
   }
 
   return (
     <header className="header-2">
       {children}
       <nav>
-        <i
-          className="hamburger"
-          onClick={toggleMenus}
-          onKeyDown={toggleMenus}
-          role="button"
-          tabIndex={0}
-        >
-          <span className="top-bar"></span>
-          <span className="middle-bar"></span>
-          <span className="bottom-bar"></span>
-        </i>
+        <Hamburger action={toggleMenus} />
         <section className="menus" ref={menuElement2}>
           <ul className="main-menu">
             {Object.entries(menus).map(([menu, submenu]) => {
