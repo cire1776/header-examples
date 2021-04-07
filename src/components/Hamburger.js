@@ -5,7 +5,11 @@ function Hamburger({ action }) {
   const hamburger = React.useRef(null);
 
   function triggerAction(event) {
-    const newState = action();
+    let newState;
+    if (action) {
+      newState = action();
+    }
+
     if (newState) {
       hamburger.current.classList.add("open");
     } else {
