@@ -15,7 +15,7 @@ export function generateSubmenu(submenu, classNames) {
   }
 
   return (
-    <ul className={`submenu ${classNames}`} s>
+    <ul key="menu" className={`submenu ${classNames}`}>
       {submenu.map(([menu, link]) => {
         return <li>{createLink(menu, link)}</li>;
       })}

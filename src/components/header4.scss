@@ -1,0 +1,85 @@
+@import "header_common";
+
+header.header-4 {
+  position: absolute;
+  left: -200px;
+  width: 320px;
+  height: 100vh;
+  min-height: 400px;
+  background-color: $primary-color;
+
+  transition: left 0.5s;
+
+  .hamburger {
+    top: 50%;
+    right: 3.5rem;
+
+    span {
+      background-color: white;
+    }
+  }
+
+  aside {
+    position: absolute;
+    top: 0;
+    right: 1.6rem;
+    width: 4rem;
+    height: 4rem;
+    margin: 2rem auto;
+
+    img {
+      width: 4rem;
+      height: 4rem;
+    }
+
+    h1 {
+      color: white;
+      margin: 1.5rem auto;
+      font-family: "Roboto", sans-serif;
+      font-size: 1rem;
+      line-height: 1.4;
+      font-weight: 700;
+      span {
+        font-weight: 200;
+      }
+    }
+  }
+
+  .menus {
+    display: none;
+    color: white;
+    width: 200px;
+    margin: 4rem 1rem;
+
+    li {
+      line-height: 1.5rem;
+
+      .submenu li a {
+        position: relative;
+        left: 2rem;
+        color: white;
+        height: 100%;
+        overflow-y: hidden;
+        overflow-x: scroll;
+      }
+
+      .submenu li a:hover {
+        color: goldenrod;
+      }
+    }
+  }
+}
+
+header.header-4:hover {
+  outline: 1px solid black;
+  left: 0;
+
+  .menus {
+    display: block;
+  }
+
+  .hamburger {
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+}

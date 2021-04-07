@@ -201,6 +201,15 @@ header.header-3 {
 
 @media screen and (min-width: 1500px) {
   section.header-3 {
+    main {
+      background-color: black;
+      width: 1500px;
+      height: 1100px;
+      margin-left: calc((100vw - 1500px) / 2);
+      overflow: hidden;
+    }
+  }
+  header.header-3 {
     background-color: black;
     position: absolute;
     width: 1500px;

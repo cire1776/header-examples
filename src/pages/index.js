@@ -4,7 +4,10 @@ import mesh from "../images/pexels-photo-3636718.jpeg";
 import HeaderOne from "../components/HeaderOne";
 import HeaderTwo from "../components/HeaderTwo";
 import HeaderThree from "../components/HeaderThree";
+import HeaderFour from "../components/HeaderFour";
+
 import logo from "../images/apmlogo.svg";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
@@ -28,7 +31,7 @@ const MENUS = {
   ],
   Security: [
     ["SSL Certificates", "/ssl_certificates"],
-    ["Domain Privacy & Protection", "/domain_protection"],
+    ["Domain Privacy", "/domain_protection"],
     ["SiteLock Security", "/sitelock"],
   ],
 };
@@ -103,16 +106,34 @@ const IndexPage = () => {
 
       <section className="header-3">
         <h1>Header Example Three</h1>
-        <HeaderThree menus={MENUS_2} specialItem={["Special", "/special"]}>
+        <main>
+          <HeaderThree menus={MENUS_2} specialItem={["Special", "/special"]}>
+            <figure>
+              <img src={logo} className="logo other" alt="stylized pegasus" />
+              <h1>
+                Alpha-Pegasus <br />
+                Media
+              </h1>
+            </figure>
+          </HeaderThree>
+          <img src={mesh} alt="a view through a lattice window" />
+        </main>
+      </section>
+
+      <section className="header-4">
+        <h1>Header Example Four</h1>
+        <HeaderFour menus={MENUS} socialMenus={SOCIAL}>
           <figure>
-            <img src={logo} className="logo other" alt="stylized pegasus" />
+            <img src={logo} alt="a stylized pegasus" />
             <h1>
-              Alpha-Pegasus <br />
-              Media
+              Alpha-
+              <br />
+              Pegasus
+              <br />
+              <span>Media</span>
             </h1>
           </figure>
-        </HeaderThree>
-        <img src={mesh} alt="a view through a lattice window" />
+        </HeaderFour>
       </section>
     </main>
   );
