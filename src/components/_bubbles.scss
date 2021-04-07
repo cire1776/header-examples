@@ -1,0 +1,106 @@
+/*
+
+  add to header-n's scss
+
+  .header-n {
+    .main-menu > li {
+      position: relative !important;
+      height: 2rem;
+    }
+  
+    .submenu {
+      & > li + li {
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  add at both sides of hamburger break point:
+
+  @include bubbles("left"|"up", direction, background-color, border-color, text-color)
+
+*/
+
+@mixin bubbles($direction, $background, $border, $text-color) {
+  .bubbles {
+    position: absolute !important;
+    white-space: nowrap;
+    padding: 15px;
+    margin: 1em 0 3em;
+    border: 5px solid $border;
+    color: $text-color;
+    background-color: $background !important;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+  }
+
+  .bubbles::before {
+    content: "";
+    position: absolute;
+  }
+
+  .bubbles::after {
+    content: "";
+    position: absolute;
+  }
+
+  @if $direction == "up" {
+    .bubbles {
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+    }
+
+    .bubbles::before {
+      top: -20px; /* value = - border-top-width - border-bottom-width */
+      left: 50% !important; /* controls horizontal position */
+      transform: translateX(-50%) !important;
+      border-width: 0 20px 20px;
+      border-style: solid;
+      border-color: $border transparent;
+    }
+
+    .bubbles:after {
+      top: -13px; /* value = - border-top-width - border-bottom-width */
+      left: 50%; /* value = (:before left) + (:before border-left) - (:after border-left) */
+      transform: translateX(-50%);
+      border-width: 0 13px 13px;
+      border-style: solid;
+      border-color: $background transparent;
+    }
+  }
+
+  @if $direction == "left" {
+    .bubbles {
+      left: 100% !important;
+      top: 50% !important;
+      transform: translateY(-68%) !important;
+      margin-left: 1.5rem !important;
+    }
+
+    /* creates the larger triangle */
+    .bubbles::before {
+      top: 50% !important; /* controls vertical position */
+      transform: translateY(-50%) !important;
+      bottom: auto !important;
+      left: -30px !important; /* value = - border-left-width - border-right-width */
+      border-width: 15px 30px 15px 0 !important;
+      border-style: solid !important;
+      border-color: transparent $border !important;
+      z-index: 1000;
+    }
+
+    /* creates the smaller  triangle */
+    .bubbles::after {
+      top: 50% !important; /* value = (:before top) + (:before border-top) - (:after border-top) */
+      transform: translateY(-50%) !important;
+      bottom: auto !important;
+      left: -21px !important; /* value = - border-left-width - border-right-width */
+      border-width: 9px 21px 9px 0 !important;
+      border-style: solid;
+      border-color: transparent $background !important;
+      z-index: 1000 !important;
+    }
+  }
+}

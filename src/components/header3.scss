@@ -1,0 +1,237 @@
+@import "header_common";
+@import "bubbles";
+
+section.header-3 {
+  & > img {
+    margin-top: 7.5rem;
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+}
+
+header.header-3 {
+  display: flex;
+  position: relative;
+  align-items: center;
+  z-index: 1000;
+  font-family: "Roboto", sans-serif;
+
+  figure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 7.5rem;
+    display: flex;
+    background-color: $primary-color;
+    color: white;
+    padding: 2rem 2rem 2rem 1rem;
+    padding-top: 1.25rem;
+
+    & > .logo {
+      width: 5em;
+      height: 5rem;
+    }
+
+    & > h1 {
+      position: relative;
+      top: 0.35rem;
+      font-family: "Roboto", sans-serif;
+      font-size: 4vw;
+      padding: 1.25rem 1rem 1.25rem 0.75rem;
+      white-space: nowrap;
+      text-align: right;
+
+      br {
+        display: block;
+      }
+    }
+  }
+
+  nav {
+    position: relative;
+    width: 100%;
+    z-index: 1000; // temporary
+
+    .hamburger {
+      position: absolute;
+      right: 0;
+      top: 2.5rem;
+
+      margin-top: 0.5rem;
+      margin-right: 0.5rem;
+
+      width: 30px;
+      height: 30px;
+
+      float: right;
+      background-color: transparent;
+      cursor: pointer;
+
+      .top-bar,
+      .middle-bar,
+      .bottom-bar {
+        position: absolute;
+        height: 4px;
+        width: 30px;
+        right: 1rem;
+        border-radius: 2.5px;
+        background-color: white;
+      }
+
+      .top-bar {
+        top: 4px;
+      }
+
+      .middle-bar {
+        top: 12px;
+      }
+
+      .bottom-bar {
+        top: 20px;
+      }
+    }
+    .menus {
+      display: flex;
+      position: absolute;
+      top: 7.5rem;
+      left: -207px;
+      width: 207px;
+      height: 300px;
+      background-color: black;
+      transition: left 0.3s;
+
+      .main-menu {
+        padding-top: 1rem;
+        text-align: center;
+        margin: 0 auto;
+
+        & > li a,
+        & > li {
+          margin-bottom: 1rem;
+          color: white;
+        }
+
+        & > li:hover,
+        & > li:hover > a {
+          cursor: pointer;
+          color: goldenrod;
+        }
+
+        & > li:hover > .submenu {
+          display: block;
+          position: absolute;
+          background-color: white;
+          padding: 1rem;
+
+          & * {
+            color: black;
+          }
+
+          & li:hover a {
+            color: goldenrod !important;
+          }
+        }
+
+        .submenu {
+          display: none;
+        }
+      }
+    }
+    .menus.shown {
+      left: 0;
+    }
+  }
+
+  // Bubbles prequistites
+  .main-menu > li {
+    position: relative !important;
+    height: 2rem;
+  }
+
+  .submenu {
+    & > li + li {
+      margin-top: 1rem;
+    }
+  }
+}
+
+@media screen and (min-width: 360px) {
+  header.header-3 {
+    figure {
+      & > h1 {
+        top: 0.4rem;
+
+        br {
+          display: none;
+        }
+      }
+    }
+    nav {
+      .main-menu {
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 699px) {
+  header.header-3 {
+    @include bubbles("left", white, goldenrod, #333);
+  }
+}
+
+@media screen and (min-width: 700px) {
+  header.header-3 {
+    @include bubbles("up", white, goldenrod, #333);
+
+    figure {
+      & > h1 {
+        top: -0.4rem;
+        font-size: 1.25rem !important;
+
+        br {
+          display: block;
+        }
+      }
+    }
+    nav {
+      .hamburger {
+        display: none;
+      }
+
+      .menus {
+        top: 2.25rem;
+        right: 1.5rem;
+        left: initial;
+        width: initial;
+        height: 7.5rem;
+        background-color: transparent;
+
+        .main-menu {
+          display: flex;
+
+          & > li,
+          & > li > a {
+            color: white;
+            margin-right: 0.75rem;
+          }
+
+          .submenu {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  section.header-3 {
+    background-color: black;
+    position: absolute;
+    width: 1500px;
+    left: calc((100vw - 1500px) / 2);
+  }
+}

@@ -1,0 +1,48 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100vw;
+}
+
+ul {
+  list-style: none;
+
+  a {
+    text-decoration: none;
+    color: black;
+
+    &:visited {
+      color: black;
+    }
+  }
+}
+
+main {
+  & > section {
+    width: 100%;
+
+    & > h1 {
+      height: 3rem;
+      width: 100%;
+      padding-top: 0.5rem;
+      padding-left: 1rem;
+      background-color: rgb(47, 46, 46);
+
+      color: white;
+    }
+  }
+
+  & > section + section {
+    margin-top: 8rem;
+  }
+}
+
+$primary-color: rgb(169, 10, 31);
+$translucent-primary-color: rgba(169, 10, 21, 0.75);

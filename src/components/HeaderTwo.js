@@ -1,6 +1,4 @@
 import React, { useRef } from "react";
-import { Link } from "gatsby";
-import logo from "../images/apmlogo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -9,7 +7,8 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 
-import "../pages/main.scss";
+import "./header2.scss";
+import { createLink } from "./header_common";
 
 const SOCIAL_ICONS = {
   twitter: <FontAwesomeIcon icon={faTwitter} size="1x" />,
@@ -32,26 +31,17 @@ const HeaderTwo = ({ menus, socialMenus, children }) => {
     menuElement2.current.classList.remove("shown");
   }
 
-  function generateSubmenu(submenu) {
+  function generateSubmenu(submenu, classNames) {
     if (!submenu) {
       return;
     }
     return (
-      <ul className="submenu">
+      <ul className={`submenu ${classNames}`}>
         {submenu.map(([menu, link]) => {
-          console.log(menu, link);
           return <li>{createLink(menu, link)}</li>;
         })}
       </ul>
     );
-  }
-
-  function createLink(title, link) {
-    if (link.includes(":")) {
-      return <a href={link}>{title}</a>;
-    }
-
-    return <Link to={link}>{title}</Link>;
   }
 
   function toggleMenus(event) {
@@ -59,7 +49,7 @@ const HeaderTwo = ({ menus, socialMenus, children }) => {
   }
 
   return (
-    <header>
+    <header className="header-2">
       {children}
       <nav>
         <i
@@ -99,7 +89,7 @@ const HeaderTwo = ({ menus, socialMenus, children }) => {
                   ) : (
                     ""
                   )}
-                  {generateSubmenu(submenu)}
+                  {generateSubmenu(submenu, "bubbles")}
                 </li>
               );
             })}
@@ -107,7 +97,6 @@ const HeaderTwo = ({ menus, socialMenus, children }) => {
           <ul className="social-menu">
             {socialMenus.map(([menuName, link]) => {
               const icon = SOCIAL_ICONS[menuName];
-              console.log(icon, menuName, link);
               return <li>{createLink(icon, link)}</li>;
             })}
           </ul>

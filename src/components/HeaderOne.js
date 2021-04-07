@@ -1,13 +1,12 @@
 import React, { useState, useRef } from "react";
 import { Link } from "gatsby";
-import logo from "../images/apmlogo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronRight,
   faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 
-import "../pages/main.scss";
+import "./header1.scss";
 
 /*
   props:
@@ -43,11 +42,7 @@ const HeaderOne = ({ menus, secondary, tertiary, special, children }) => {
   }, []);
 
   function createLink(title, link) {
-    if (!link) {
-      console.log("createLink", title, link);
-    }
     if (link.includes(":")) {
-      console.log(link);
       return <a href={link}>{title}</a>;
     }
 
@@ -58,7 +53,7 @@ const HeaderOne = ({ menus, secondary, tertiary, special, children }) => {
     setActiveSubmenu(null);
   }
 
-  function generateSubmenu(submenu, submenuItems) {
+  function generateSubmenu(submenu, submenuItems, classNames) {
     if (!submenuItems) {
       return <></>;
     }
@@ -79,7 +74,7 @@ const HeaderOne = ({ menus, secondary, tertiary, special, children }) => {
           size="1x"
           className="expanded-only"
         />
-        <ul className={`submenu ${shown ? "shown" : ""}`}>
+        <ul className={`submenu ${classNames} ${shown ? "shown" : ""}`}>
           {submenuItems.map(([menuItem, link]) => {
             return <li>{createLink(menuItem, link)}</li>;
           })}
@@ -104,13 +99,19 @@ const HeaderOne = ({ menus, secondary, tertiary, special, children }) => {
   }
 
   return (
-    <header className="" ref={menuFlag}>
+    <header className="header-1" ref={menuFlag}>
       {children}
       <nav>
-        <i className="navbar-switch" onClick={toggleMenu}>
-          <span className="icon-bar top-bar"></span>
-          <span className="icon-bar middle-bar"></span>
-          <span className="icon-bar bottom-bar"></span>
+        <i
+          className="navbar-switch"
+          onClick={toggleMenu}
+          onKeyDown={toggleMenu}
+          role="button"
+          tabIndex={0}
+        >
+          <span className="top-bar"></span>
+          <span className="middle-bar"></span>
+          <span className="bottom-bar"></span>
         </i>
         <figure className="special-menu condensed-only">
           {createLink(special[0], special[1])}
@@ -144,7 +145,7 @@ const HeaderOne = ({ menus, secondary, tertiary, special, children }) => {
 
               return (
                 <li className="main-item" key={menuName}>
-                  {generateSubmenu(menuName, submenu)}
+                  {generateSubmenu(menuName, submenu, "bubbles")}
                 </li>
               );
             })}
