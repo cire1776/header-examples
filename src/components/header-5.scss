@@ -1,0 +1,362 @@
+@import "header_common";
+
+section.header-5 {
+  margin-top: 100vh;
+}
+
+.stat-holder {
+  display: flex;
+
+  .circle + .circle {
+    margin-left: 0.75rem;
+  }
+
+  .circle {
+    position: relative;
+    line-height: 0;
+    left: 0.5rem;
+    width: 45%;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    figure {
+      position: absolute;
+      margin: 0;
+      padding: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+
+      text-align: center;
+
+      h2 {
+        position: relative;
+        top: 40%;
+        padding: 0 !important;
+        font-size: 2rem;
+        width: 100%;
+        text-align: center;
+      }
+
+      p {
+        position: relative;
+        top: 55%;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 0.5rem;
+        text-transform: uppercase;
+        white-space: nowrap;
+        text-align: center;
+      }
+    }
+  }
+  .circle::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+}
+
+#menuScreen {
+  display: none;
+
+  &.shown {
+    display: block;
+  }
+}
+
+#menuScreen {
+  position: absolute;
+  min-height: 100vh;
+  width: 100%;
+  background-color: rgb(22, 98, 150);
+  color: white;
+  z-index: 10000;
+
+  nav {
+    .hamburger {
+      margin-top: 0.5rem;
+
+      > span {
+        background-color: white;
+      }
+    }
+
+    .pane {
+      a {
+        font-size: 1.25rem;
+      }
+    }
+
+    li {
+      cursor: pointer;
+    }
+
+    .button {
+      display: block;
+      margin: 1rem;
+      padding: 0.5rem 1rem;
+
+      background: white;
+      color: rgb(36, 126, 172);
+      border-radius: 10px;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    & > ul {
+      margin-top: 2rem;
+
+      // first level
+      > li {
+        font-family: "Roboto", sans-serif;
+        font-size: 1.5rem;
+        padding-top: 0.6rem;
+        min-height: 3.5rem;
+        border-top: 2px solid rgb(12, 128, 153);
+        margin-left: 1rem;
+
+        &:last-child {
+          border-bottom: 2px solid rgb(12, 128, 153);
+        }
+
+        &.search {
+          margin-top: -1rem;
+          border-top: none;
+        }
+      }
+
+      li {
+        span {
+          float: right;
+          margin-right: 1rem;
+        }
+
+        .down-arrow {
+          display: none;
+        }
+
+        .right-arrow {
+          display: inline-block;
+        }
+
+        // second level
+        & > .pane {
+          display: none;
+          position: relative;
+          left: -1rem;
+          width: 100vw !important;
+          padding-left: 2rem;
+          margin-top: 0.5rem;
+          background-color: rgb(20, 90, 138);
+
+          & > ul > li {
+            min-height: 3.5rem;
+            padding-top: 0.8rem;
+          }
+
+          & .pane {
+            position: relative;
+            left: -2rem;
+            width: 100vw;
+            padding-left: 3rem;
+            background-color: rgb(20, 83, 128);
+
+            & .pane {
+              background-color: magenta;
+            }
+
+            & .pane {
+              background-color: maroon;
+            }
+          }
+        }
+
+        // Top Level a's only
+        & > a {
+          color: white;
+        }
+
+        // all a
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+
+      li.open {
+        position: relative;
+        background-color: rgb(36, 126, 172);
+        width: 100vw;
+        left: -1rem;
+        padding-left: 1rem;
+
+        .right-arrow {
+          display: none;
+        }
+        .down-arrow {
+          display: inline-block;
+        }
+        & > .pane {
+          display: block;
+          height: auto;
+
+          & > ul > li.open {
+            position: relative;
+            left: -2rem !important;
+            padding-left: 2rem;
+            background: rgb(20, 90, 138);
+          }
+        }
+      }
+    }
+  }
+}
+
+header.header-5 {
+  position: relative;
+  display: flex;
+  font-family: "Roboto", sans-serif;
+  height: 3rem;
+
+  .hamburger {
+    display: none;
+  }
+
+  & > img {
+    height: 100%;
+  }
+
+  & > h1 {
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+  }
+
+  nav {
+    position: absolute;
+    top: 0.25rem;
+    right: 0;
+    width: calc(100vw - 19rem);
+
+    .menus {
+      display: flex;
+      position: absolute;
+      right: 1.256rem;
+      left: 1rem;
+
+      .main-menu {
+        display: flex;
+
+        & > li {
+          margin-top: 0.75rem;
+          margin-left: 0.5rem;
+
+          button {
+            border: 1px solid white;
+            background-color: white;
+            font-size: inherit;
+            cursor: pointer;
+          }
+        }
+        & > li + li {
+          margin-left: 1.5rem;
+        }
+
+        & > li:hover {
+          text-decoration: underline;
+        }
+
+        .pane {
+          display: none;
+
+          h1 {
+            font-size: 1.25rem;
+            height: 1.25rem;
+
+            margin: 0.5rem 1rem;
+            color: $primary-color;
+          }
+        }
+
+        li.open {
+          padding-bottom: 1rem;
+          & > .pane {
+            display: block;
+            position: absolute;
+            top: 2.5rem;
+            left: 5rem;
+            border-radius: 10px;
+            box-shadow: 0 0 5px 5px lightgrey;
+
+            article {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 50%;
+              height: 100%;
+            }
+
+            aside {
+              position: absolute;
+              top: 0;
+              left: 50%;
+              width: 50%;
+              height: 100%;
+
+              background-color: #f5f5f5;
+            }
+          }
+        }
+      }
+
+      .secondary-menu {
+        display: flex;
+        position: absolute;
+        right: 0;
+        top: 0.35rem;
+        align-items: center;
+
+        li + li {
+          margin-left: 1.5rem;
+        }
+
+        li:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 359px) {
+  header.header-5 {
+    & > h1 {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  header.header-5 {
+    .hamburger {
+      display: block;
+    }
+
+    .menus {
+      display: none !important;
+    }
+  }
+}
+
+@media screen and (max-width: 1240px) {
+  header.header-5 {
+    .secondary-menu {
+      .volatile {
+        display: none;
+      }
+    }
+  }
+}

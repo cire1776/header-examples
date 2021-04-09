@@ -5,9 +5,274 @@ section.header-3 {
     height: 300px;
     overflow: hidden;
 
-    img {
+    & > img {
+      margin-top: 7.5rem;
+      height: 300px;
       width: 100%;
-      margin-top: 0rem;
+      object-fit: cover;
+      z-index: 1;
+    }
+  }
+}
+
+header.header-5 {
+  .community-pane {
+    min-width: 600px;
+
+    article {
+      ul {
+        margin: 0.5rem 1rem !important;
+        width: 50%;
+        overflow: hidden;
+
+        h1 {
+          margin-left: 0 !important;
+        }
+
+        li {
+          line-height: 1.75;
+        }
+      }
+    }
+
+    aside {
+      padding: 1rem;
+
+      h2 {
+        margin: 1.5rem 0;
+      }
+      img {
+        margin-top: 1.5rem;
+      }
+    }
+  }
+  .jamstack-pane {
+    min-width: 600px;
+    header {
+      display: flex;
+      margin-bottom: 1.5rem;
+
+      .logo {
+        height: 2.5rem !important;
+      }
+
+      h1 {
+        color: black !important;
+      }
+    }
+
+    .book {
+      & > a {
+        display: flex;
+        width: 100%;
+      }
+
+      .blurb {
+        width: 50%;
+        padding: 1rem;
+
+        h3 {
+          font-size: 1rem;
+          line-height: 1.75;
+        }
+
+        p {
+          font-size: 0.7rem;
+        }
+      }
+
+      .bookcover {
+        width: 50%;
+        height: 100%;
+
+        img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
+      }
+    }
+
+    ul {
+      margin: 0.5rem 1rem !important;
+      width: 100%;
+      overflow: hidden;
+
+      h1 {
+        margin-left: 0 !important;
+        white-space: nowrap;
+      }
+
+      li {
+        line-height: 1.75;
+      }
+    }
+  }
+
+  .enterprise-pane {
+    min-width: 800px;
+    width: 80% !important;
+    left: -5rem !important;
+
+    ul {
+      margin: 0.5rem 1rem !important;
+      width: 50%;
+      overflow: hidden;
+
+      h1 {
+        margin-left: 0 !important;
+      }
+
+      li {
+        line-height: 1.75;
+      }
+    }
+
+    .solution {
+      margin-left: -0.75rem !important;
+
+      h1 {
+        color: rgb(33, 33, 172) !important;
+      }
+      li > a {
+        white-space: nowrap;
+      }
+    }
+
+    article {
+      width: 66% !important;
+      display: flex;
+    }
+
+    aside {
+      width: 34% !important;
+      left: 66% !important;
+
+      h1 {
+        color: black !important;
+        vertical-align: middle;
+      }
+
+      img {
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        // margin-top: 1rem !important;
+      }
+
+      p {
+        line-height: 2;
+        margin-top: 2rem;
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  .platform-pane {
+    left: 0 !important;
+    width: 70% !important;
+    font-size: 1rem;
+    min-width: 600px;
+    max-width: 700px;
+
+    article,
+    aside {
+      height: 75% !important;
+    }
+
+    footer {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 75%;
+
+      height: 25%;
+      width: 100%;
+
+      border-top: 1px solid gray;
+
+      h1 {
+        margin-left: 0.5rem !important;
+      }
+
+      ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-center;
+      }
+
+      li > a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: 2rem;
+
+        .react-icon {
+          margin-top: 1rem;
+          margin-left: -0.5rem;
+          width: 3.5rem;
+          height: 3.5rem;
+
+          & + span {
+            margin-top: 0.75rem;
+          }
+        }
+
+        .gatsby-icon {
+          margin-top: 1.75rem;
+          margin-right: 1rem;
+          width: 2rem !important;
+          height: 2rem !important;
+
+          & + span {
+            margin-top: 1.75rem;
+          }
+        }
+
+        .jamstack-icon {
+          margin-top: 1.25rem;
+          margin-right: 0.5rem;
+          width: 3rem;
+          height: 3rem;
+
+          & + span {
+            margin-top: 1rem;
+          }
+        }
+      }
+
+      & > ul {
+        display: flex;
+
+        span {
+          display: block;
+          text-align: center;
+        }
+      }
+    }
+
+    p {
+      margin-left: 1rem;
+    }
+
+    ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      margin: 1rem;
+
+      & > li {
+        margin-bottom: 1rem;
+
+        svg {
+          color: $primary-color;
+          margin-right: 1rem;
+        }
+      }
+
+      & > li:hover {
+        text-decoration: underline;
+      }
     }
   }
 }
@@ -21,5 +286,21 @@ section.header-3 {
     img {
       max-width: 1500px;
     }
+  }
+}
+
+section.header-5 {
+  & > img {
+    margin-top: 0;
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .main-menu li .pane {
+    width: 60%;
+    height: 280px;
+    background-color: white;
   }
 }

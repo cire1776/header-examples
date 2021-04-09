@@ -7,9 +7,14 @@ import HeaderOne from "../components/HeaderOne";
 import HeaderTwo from "../components/HeaderTwo";
 import HeaderThree from "../components/HeaderThree";
 import HeaderFour from "../components/HeaderFour";
+import HeaderFive from "../components/HeaderFive";
+
+import Platform from "../panes/Platform";
+import Enterprise from "../panes/Enterprise";
+import Jamstack from "../panes/Jamstack";
+import Community from "../panes/Community";
 
 import logo from "../images/apmlogo.svg";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
@@ -72,8 +77,82 @@ const SOCIAL = [
   ["youtube", "https://youtube.com"],
 ];
 
+const TIERED_MENU = {
+  Platform: {
+    "The Platform": {
+      Build: "/build",
+      Edge: "/edge",
+      Functions: "/functions",
+      Workflow: "/workflow",
+    },
+    "Key Features": {
+      "Deploy Preivew": "/deploy",
+      "Split Testing": "/split-testing",
+      Forms: "/forms",
+      Identity: "/identity",
+      Analytics: "/analytics",
+      Security: "/security",
+      "Build Plugins": "/build-plugins",
+    },
+    Technologies: {
+      Jamstack: "/jamstack",
+      React: "/react",
+      Gatsby: "/gatsby",
+    },
+  },
+
+  Pricing: "/pricing",
+
+  Enterprise: {
+    Enterprise: {
+      "High-Performance Products": "/performance",
+      Customers: "/customers",
+      Resources: "/resources",
+      "Enterprise Whitepaper": "/whitepaper",
+      Security: "/security",
+      "Technology Parters": "/technology-partners",
+      "Agency Partner Program": "/agency-partner",
+    },
+    Solutions: {
+      "E-commerce": "/ecommerce",
+      "Web Applications": "/web-applications",
+      "Large Sites": "/large-sites",
+      "What others have built →": "/others-built",
+    },
+  },
+  Jamstack: {
+    "Jamstack Introduction": "/jamstack-intro",
+    "Jamstack Book": "/jamstack-book",
+    "Jamstack Conf": "/jamstack-conf",
+  },
+
+  Community: {
+    Blog: "/blog",
+    "Community Hub": "/community",
+    "Support Forum": "/support-forum",
+    "Jamstack Explorers": "/jamstack-exploreres",
+    "Remotely Interesting Podcast": "/podcast",
+    "Swag Store": "/store",
+  },
+
+  Docs: "/docs",
+};
+
+const PANES = {
+  Platform: <Platform menu={TIERED_MENU.Platform} classNames="platform-pane" />,
+  Enterprise: (
+    <Enterprise menu={TIERED_MENU.Enterprise} classNames="enterprise-pane" />
+  ),
+  Jamstack: <Jamstack menu={TIERED_MENU.Jamstack} classNames="jamstack-pane" />,
+  Community: (
+    <Community menu={TIERED_MENU.Community} classNames="community-pane" />
+  ),
+};
+
 // markup
 const IndexPage = () => {
+  const wholeScreen = React.useRef(null);
+
   return (
     <main>
       <section className="header-1">
@@ -136,6 +215,26 @@ const IndexPage = () => {
             </h1>
           </figure>
         </HeaderFour>
+      </section>
+
+      <section className="header-5">
+        <h1>Header Example Five</h1>
+        <HeaderFive
+          menu={TIERED_MENU}
+          panes={PANES}
+          secondaryMenu={{
+            "Contact sales": "/contact_sales",
+          }}
+          search={true}
+          login={["/login", "/signup"]}
+          wholeScreen={wholeScreen}
+        >
+          <img src={logo} className="logo" alt="stylized pegasus" />
+          <h1>
+            Alpha-Pegasus <span>Media</span>
+          </h1>
+        </HeaderFive>
+        <img src={mesh} alt="a view through a lattice window" />
       </section>
     </main>
   );
