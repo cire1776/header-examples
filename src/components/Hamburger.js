@@ -1,7 +1,7 @@
 import React from "react";
 import "./hamburger.scss";
 
-function Hamburger({ action }) {
+function Hamburger({ action, initiallyOpen }) {
   const hamburger = React.useRef(null);
 
   function triggerAction(event) {
@@ -16,6 +16,12 @@ function Hamburger({ action }) {
       hamburger.current.classList.remove("open");
     }
   }
+
+  React.useEffect(() => {
+    if (initiallyOpen) {
+      hamburger.current.classList.add("open");
+    }
+  }, [initiallyOpen]);
 
   return (
     <i
