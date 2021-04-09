@@ -1,8 +1,34 @@
 import React from "react";
 import "./hamburger.scss";
 
-function Hamburger({ action, initiallyOpen }) {
+export function Closeburger({ action }) {
   const hamburger = React.useRef(null);
+
+  function triggerAction(event) {
+    if (action) {
+      action();
+    }
+  }
+
+  return (
+    <i
+      className="hamburger open"
+      onClick={triggerAction}
+      onKeyDown={triggerAction}
+      role="button"
+      tabIndex={0}
+      ref={hamburger}
+    >
+      <span className="top-bar"></span>
+      {/* <span className="middle-bar"></span> */}
+      <span className="bottom-bar"></span>
+    </i>
+  );
+}
+
+function Hamburger({ action, forceOpen }) {
+  const hamburger = React.useRef(null);
+  const forcedOpen = React.useState(forceOpen)[0];
 
   function triggerAction(event) {
     let newState;
@@ -18,10 +44,10 @@ function Hamburger({ action, initiallyOpen }) {
   }
 
   React.useEffect(() => {
-    if (initiallyOpen) {
+    if (forcedOpen) {
       hamburger.current.classList.add("open");
     }
-  }, [initiallyOpen]);
+  });
 
   return (
     <i
