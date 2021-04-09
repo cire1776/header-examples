@@ -19,6 +19,10 @@ header.header-1 {
   transition: left 0.3s;
   background-color: white;
 
+  .hamburger {
+    display: block;
+  }
+
   &.slid {
     left: -207px;
 
@@ -215,6 +219,10 @@ header.header-1 {
     .main-menu > li {
       position: relative !important;
       height: 2rem;
+    }
+
+    .hamburger {
+      display: none !important;
     }
 
     .submenu {
