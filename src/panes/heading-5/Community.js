@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
-import community from "../images/masthead-community.svg";
-import { createLink } from "../components/header_common";
+import community from "../../images/masthead-community.svg";
+import { createLink } from "../../components/header_common";
 
 function Community({ menu, classNames }) {
   return (

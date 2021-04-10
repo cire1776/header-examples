@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "gatsby";
-import logo from "../images/apmlogo.svg";
-import bookcover from "../images/6ea302f8-370.webp";
-import { createLink } from "../components/header_common";
+import logo from "../../images/apmlogo.svg";
+import bookcover from "../../images/6ea302f8-370.webp";
+import { createLink } from "../../components/header_common";
 
 function Jamstack({ menu, classNames }) {
   return (

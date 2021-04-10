@@ -1,10 +1,10 @@
 import React from "react";
 
-import { createLink } from "../components/header_common";
+import { createLink } from "../../components/header_common";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import apple_logo from "../images/Apple_Logo.svg";
+import apple_logo from "../../images/Apple_Logo.svg";
 function Enterprise({ menu, classNames }) {
   return (
     <>

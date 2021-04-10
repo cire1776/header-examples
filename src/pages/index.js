@@ -9,10 +9,10 @@ import HeaderThree from "../components/HeaderThree";
 import HeaderFour from "../components/HeaderFour";
 import HeaderFive from "../components/HeaderFive";
 
-import Platform from "../panes/Platform";
-import Enterprise from "../panes/Enterprise";
-import Jamstack from "../panes/Jamstack";
-import Community from "../panes/Community";
+import Platform from "../panes/heading-5/Platform";
+import Enterprise from "../panes/heading-5/Enterprise";
+import Jamstack from "../panes/heading-5/Jamstack";
+import Community from "../panes/heading-5/Community";
 
 import logo from "../images/apmlogo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

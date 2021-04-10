@@ -7,9 +7,9 @@ import {
   faCloudMeatball,
   faLayerGroup,
 } from "@fortawesome/free-solid-svg-icons";
-import jamstack from "../images/Jamstack_Icon_Black.svg";
-import react from "../images/React-icon.svg";
-import gatsby from "../images/Gatsby.svg";
+import jamstack from "../../images/Jamstack_Icon_Black.svg";
+import react from "../../images/React-icon.svg";
+import gatsby from "../../images/Gatsby.svg";
 
 function Platform({ menu, classNames }) {
   const ICONS = {
