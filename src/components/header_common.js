@@ -21,6 +21,10 @@ const LINK_ICONS = {
   search_small: <FontAwesomeIcon icon={faSearch} size="1x" />,
 };
 
+export function toSnakeCase(string) {
+  return string.toLowerCase().replace(/\s|\//g, "-");
+}
+
 export function createLink(title, link, classNames) {
   if (LINK_ICONS[title]) {
     title = LINK_ICONS[title];
