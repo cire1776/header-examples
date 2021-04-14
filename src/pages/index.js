@@ -8,11 +8,16 @@ import HeaderTwo from "../components/HeaderTwo";
 import HeaderThree from "../components/HeaderThree";
 import HeaderFour from "../components/HeaderFour";
 import HeaderFive from "../components/HeaderFive";
+import HeaderSix from "../components/HeaderSix";
 
 import Platform from "../panes/heading-5/Platform";
 import Enterprise from "../panes/heading-5/Enterprise";
 import Jamstack from "../panes/heading-5/Jamstack";
 import Community from "../panes/heading-5/Community";
+import Products from "../panes/heading-6/Products";
+import Downloads from "../panes/heading-6/Downloads";
+import Pricing from "../panes/heading-6/Pricing";
+import Learn from "../panes/heading-6/Learn";
 
 import logo from "../images/apmlogo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -149,6 +154,57 @@ const PANES = {
   ),
 };
 
+const MENU_3 = {
+  Products: {
+    "Mockplus Cloud": "/cloud",
+    "Mockplus Classic": "/classic",
+    "Remote Collaboration": "/collaboration",
+  },
+  Downloads: {
+    "MockPlus Cloud Plugins": {
+      Photoshop: [
+        "Handoff PS designs with accurate specs, assets & code snippets",
+        "/photoshop",
+      ],
+      Figma: [
+        "Handoff Figma designs with accurate specs, assets & code snippets",
+        "/figma",
+      ],
+      Axure: ["Export wireframes and prototypes from Axure", "/axure"],
+      Sketch: [
+        "Handoff Sketch designs with accurate speechSynthesis, assets & code snippets",
+        "/sketch",
+      ],
+      "Adobe XD": [
+        "Handoff XD designs with accurate specs, assets & code snippets",
+        "/adobe-xd",
+      ],
+    },
+    "MockPlus Classic": {
+      "Mockplus for Windows/Mac": [
+        "Prototype faster, smarter and easier",
+        "/classic_desktop",
+      ],
+      "Mockplus for iOS/Android": [
+        "Test app prototypes on real devices",
+        "/classic_mobile",
+      ],
+    },
+  },
+  Enterprise: "/enterprise",
+  Pricing: {
+    "Mockplus Cloud": "/buy/mockplus",
+    "Mockplus Classic": "/buy/classic",
+  },
+  Learn: { Tutorial: "/tutorial", Blog: "/blog", Community: "/community" },
+};
+const PANES_2 = {};
+
+PANES_2.Products = <Products />;
+PANES_2.Downloads = <Downloads menu={MENU_3} panes={PANES_2} />;
+PANES_2.Pricing = <Pricing />;
+PANES_2.Learn = <Learn />;
+
 // markup
 const IndexPage = () => {
   const wholeScreen = React.useRef(null);
@@ -235,6 +291,22 @@ const IndexPage = () => {
           </h1>
         </HeaderFive>
         <img src={mesh} alt="a view through a lattice window" />
+      </section>
+
+      <section className="header-6">
+        <h1>Header Example Six</h1>
+        <main>
+          <HeaderSix menu={MENU_3} panes={PANES_2}>
+            <figure>
+              <img src={logo} className="logo other" alt="stylized pegasus" />
+              <h1>
+                Alpha-Pegasus <br />
+                <span>Media</span>
+              </h1>
+            </figure>
+          </HeaderSix>
+          <img src={mesh} alt="a view through a lattice window" />
+        </main>
       </section>
     </main>
   );
