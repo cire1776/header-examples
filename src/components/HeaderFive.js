@@ -30,7 +30,7 @@ function HeaderFive({
 
   return (
     <>
-      <dialog id="menuScreen" ref={menuScreen}>
+      <dialog className="menuScreen header-5" ref={menuScreen}>
         <nav>
           <Closeburger action={toggleMenu} />
           <ul>
