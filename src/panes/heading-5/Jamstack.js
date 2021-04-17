@@ -11,7 +11,7 @@ function Jamstack({ menu, classNames }) {
         <ul>
           <h1>Jamstack Architecture</h1>
           {Object.entries(menu).map(([title, link]) => {
-            return <li>{createLink(title, link)}</li>;
+            return <li key={title}>{createLink(title, link)}</li>;
           })}
         </ul>
       </article>

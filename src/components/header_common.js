@@ -89,7 +89,7 @@ export function generateSubmenu(submenu, classNames) {
   return (
     <ul key="menu" className={`submenu ${classNames}`}>
       {submenu.map(([menu, link]) => {
-        return <li>{createLink(menu, link)}</li>;
+        return <li key={menu}>{createLink(menu, link)}</li>;
       })}
     </ul>
   );
@@ -166,7 +166,11 @@ export function generateSubmenu3(title, submenu, classNames, dualArrows) {
       <div role="presentation" className={`pane`}>
         <ul>
           {Object.entries(submenu).map(([title, submenu]) => {
-            return <li>{generateSubmenu3(title, submenu, null, true)}</li>;
+            return (
+              <li key={title}>
+                {generateSubmenu3(title, submenu, null, true)}
+              </li>
+            );
           })}
         </ul>
       </div>

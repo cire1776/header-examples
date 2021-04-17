@@ -37,11 +37,13 @@ function HeaderThree({ menus, specialItem, children }) {
           <ul className="main-menu">
             {Object.entries(menus).map(([menuItem, submenu]) => {
               if (typeof submenu === "string") {
-                return <li>{createLink(menuItem, submenu)}</li>;
+                return (
+                  <li key={`3-${menuItem}`}>{createLink(menuItem, submenu)}</li>
+                );
               }
 
               return (
-                <li className="main-item" key={menuItem}>
+                <li className="main-item" key={`3-${menuItem}`}>
                   {menuItem}
                   {generateSubmenu(submenu, "bubbles")}
                 </li>

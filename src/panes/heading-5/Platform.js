@@ -35,7 +35,7 @@ function Platform({ menu, classNames }) {
           <ul>
             {Object.entries(menu["The Platform"]).map(([title, link]) => {
               return (
-                <li>
+                <li key={title}>
                   <Link to={link}>
                     <FontAwesomeIcon icon={ICONS[title]} size="1x" />
                     {title}
@@ -51,7 +51,7 @@ function Platform({ menu, classNames }) {
         <ul className="key-features">
           {Object.entries(menu["Key Features"]).map(([title, link]) => {
             return (
-              <li>
+              <li key={title}>
                 <Link to={link}>{title}</Link>
               </li>
             );
@@ -63,7 +63,7 @@ function Platform({ menu, classNames }) {
         <ul>
           {Object.entries(menu["Technologies"]).map(([title, link]) => {
             return (
-              <li>
+              <li key={title}>
                 <Link to={link}>
                   <img
                     src={ICONS[title]}

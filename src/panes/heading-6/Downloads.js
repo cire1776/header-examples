@@ -22,33 +22,29 @@ const ICONS = {
 
 function Downloads({ menu, panes }) {
   return (
-    <section className="pane downloads">
+    <section className="pane downloads" key="downloads">
       {Object.entries(menu.Downloads).map(([title, object]) => {
         return (
-          <>
-            <article key={title} className={toSnakeCase(title)}>
-              <h1>{title}</h1>
-              <div className="layout">
-                {Object.entries(object).map(
-                  ([subtitle, [description, link]]) => {
-                    return (
-                      <div className="brand-wrapper">
-                        <FontAwesomeIcon
-                          icon={ICONS[subtitle]}
-                          size="2x"
-                          className={toSnakeCase(subtitle)}
-                        />
-                        <div>
-                          <h2>{subtitle}</h2>
-                          <p>{description}</p>
-                        </div>
-                      </div>
-                    );
-                  }
-                )}
-              </div>
-            </article>
-          </>
+          <article key={title} className={toSnakeCase(title)}>
+            <h1>{title}</h1>
+            <div className="layout">
+              {Object.entries(object).map(([subtitle, [description, link]]) => {
+                return (
+                  <div className="brand-wrapper" key={subtitle}>
+                    <FontAwesomeIcon
+                      icon={ICONS[subtitle]}
+                      size="2x"
+                      className={toSnakeCase(subtitle)}
+                    />
+                    <div>
+                      <h2>{subtitle}</h2>
+                      <p>{description}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </article>
         );
       })}
     </section>

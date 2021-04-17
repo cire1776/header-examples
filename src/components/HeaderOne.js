@@ -82,7 +82,7 @@ const HeaderOne = ({ menus, secondary, tertiary, special, children }) => {
         />
         <ul className={`submenu ${classNames} ${shown ? "shown" : ""}`}>
           {submenuItems.map(([menuItem, link]) => {
-            return <li>{createLink(menuItem, link)}</li>;
+            return <li key={menuItem}>{createLink(menuItem, link)}</li>;
           })}
         </ul>
       </>
@@ -110,7 +110,7 @@ const HeaderOne = ({ menus, secondary, tertiary, special, children }) => {
         </figure>
         <section className="menus" ref={menuElement}>
           <ul className="home-menu">
-            <li>
+            <li key="home">
               <Link to="/">HOME</Link>
             </li>
           </ul>
@@ -146,7 +146,7 @@ const HeaderOne = ({ menus, secondary, tertiary, special, children }) => {
           <ul className="simple-menu condensed-only">
             {tertiary.map(([menuName, link]) => {
               return (
-                <li>
+                <li key={menuName}>
                   <span>{createLink(menuName, link)}</span>
                 </li>
               );

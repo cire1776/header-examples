@@ -14,7 +14,7 @@ function HeaderFour({ children, menus, socialMenu }) {
           <ul className="main-menu">
             {Object.entries(menus).map(([menuItem, submenu]) => {
               return (
-                <li className="main-item" key={menuItem}>
+                <li className="main-item" key={`4-${menuItem}`}>
                   {menuItem}
                   {generateSubmenu(submenu)}
                 </li>
@@ -23,7 +23,7 @@ function HeaderFour({ children, menus, socialMenu }) {
           </ul>
           <ul className="social-menu">
             {socialMenu.map(([menu, link]) => {
-              return <li>{createLink(menu, link)}</li>;
+              return <li key={`4-${menu}`}>{createLink(menu, link)}</li>;
             })}
           </ul>
         </section>

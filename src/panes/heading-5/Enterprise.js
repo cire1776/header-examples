@@ -13,13 +13,13 @@ function Enterprise({ menu, classNames }) {
           <h1>Enterprise</h1>
 
           {Object.entries(menu["Enterprise"]).map(([title, link]) => {
-            return <li>{createLink(title, link)}</li>;
+            return <li key={title}>{createLink(title, link)}</li>;
           })}
         </ul>
         <ul className="solution">
           <h1>Solutions</h1>
           {Object.entries(menu.Solutions).map(([title, link]) => {
-            return <li>{createLink(title, link)}</li>;
+            return <li key={title}>{createLink(title, link)}</li>;
           })}
         </ul>
       </article>

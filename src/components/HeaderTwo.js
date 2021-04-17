@@ -29,7 +29,7 @@ const HeaderTwo = ({ menus, socialMenus, children }) => {
     return (
       <ul className={`submenu ${classNames}`}>
         {submenu.map(([menu, link]) => {
-          return <li>{createLink(menu, link)}</li>;
+          return <li key={menu}>{createLink(menu, link)}</li>;
         })}
       </ul>
     );
@@ -78,7 +78,7 @@ const HeaderTwo = ({ menus, socialMenus, children }) => {
           </ul>
           <ul className="social-menu">
             {socialMenus.map(([menuName, link]) => {
-              return <li>{createLink(menuName, link)}</li>;
+              return <li key={menuName}>{createLink(menuName, link)}</li>;
             })}
           </ul>
         </section>

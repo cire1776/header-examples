@@ -53,6 +53,7 @@ function HeaderSix({ menu, panes, children }) {
                 role="presentation"
                 className="pane-selector"
                 onClick={toggleTarget}
+                key={title}
               >
                 {panes[title] ? (
                   <>

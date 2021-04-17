@@ -34,7 +34,7 @@ function HeaderFive({
         <nav>
           <Closeburger action={toggleMenu} />
           <ul>
-            <li className="search">
+            <li className="search" key="search_small">
               {search && createLink("search_small", "/search")}
             </li>
 
@@ -44,6 +44,7 @@ function HeaderFive({
                   role="presentation"
                   onClick={toggleOpen}
                   onKeyDown={toggleOpen}
+                  key={title}
                 >
                   {generateSubmenu3(title, submenu, null, true)}{" "}
                 </li>
@@ -52,7 +53,7 @@ function HeaderFive({
 
             {login && (
               <>
-                <li>{createLink("Login", login[0])}</li>
+                <li key="Login">{createLink("Login", login[0])}</li>
                 {createLink("Sign Up", login[1], "button")}
               </>
             )}
@@ -72,6 +73,7 @@ function HeaderFive({
                     role="presentation"
                     onMouseEnter={openPane}
                     onMouseLeave={closePane}
+                    key={title}
                   >
                     {generatePane(title, submenu, classNames, panes)}
                   </li>
@@ -80,19 +82,23 @@ function HeaderFive({
             </ul>
 
             <ul className="secondary-menu">
-              {search && <li>{createLink("search", "/search")}</li>}
+              {search && (
+                <li key="search">{createLink("search", "/search")}</li>
+              )}
 
               {Object.entries(secondaryMenu).map(([title, submenu]) => {
                 return (
-                  <li className="volatile">{createLink(title, submenu)}</li>
+                  <li className="volatile" key={title}>
+                    {createLink(title, submenu)}
+                  </li>
                 );
               })}
 
               {login && (
                 <>
-                  <li>{createLink("Login", login[0])}</li>
+                  <li key="Login">{createLink("Login", login[0])}</li>
                   <li>|</li>
-                  <li>{createLink("Sign Up", "/signup")}</li>
+                  <li key="Sign Up">{createLink("Sign Up", "/signup")}</li>
                 </>
               )}
             </ul>
