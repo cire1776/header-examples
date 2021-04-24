@@ -1,5 +1,6 @@
 @import "header_common";
 
+// isolate header-6 from other header examples
 section.header-6 {
   main {
     position: relative;
@@ -15,21 +16,25 @@ section.header-6 {
   }
 }
 
+// format the menu screen but don't display it until it is marked "open"
 .menu-screen.header-6 {
   display: none;
+
   position: absolute;
   left: 0;
   top: 0;
   background: whitesmoke;
   width: 100%;
-  height: 0;
+  min-height: 100vh;
   transition: top 0.3s ease;
   font-family: "Roboto", sans-serif;
+  z-index: 10000;
+  color: black;
 
   .hamburger {
-    margin-top: 3rem !important;
-    margin-right: 3rem !important;
-    margin-bottom: 2rem !important;
+    margin-top: 3rem;
+    margin-right: 3rem;
+    margin-bottom: 2rem;
   }
 
   .pane-selector:first-of-type {
@@ -37,10 +42,12 @@ section.header-6 {
     border-top: 1px solid lightgrey;
   }
 
+  // pane-selector styling and arrow selection
   .pane-selector {
     padding: 2rem;
     border-bottom: 1px solid lightgrey;
 
+    // chevron span
     span {
       float: right;
       margin-right: 1rem;
@@ -67,26 +74,15 @@ section.header-6 {
 
   .pane {
     display: none;
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
 
   &.open {
     display: block;
-    height: auto;
-    min-height: 100vh;
-    top: 0;
-    left: 0;
-    z-index: 10000;
-    color: black;
-
-    header {
-      display: none;
-    }
 
     li.open {
       .pane {
         display: block;
-        margin-top: 2rem;
 
         article {
           margin-top: 2rem;
@@ -101,16 +97,61 @@ section.header-6 {
       }
     }
   }
-
-  .hamburger {
-    margin-top: 2rem;
-    margin-right: 2rem;
-  }
 }
 
 header.header-6 {
   .panes {
     display: none;
+  }
+}
+
+.pane.products {
+  background-color: white;
+  padding: 2rem;
+
+  article {
+    width: 25%;
+
+    &:last-of-type {
+      width: 50%;
+
+      img {
+        width: 9rem;
+        margin-right: 2rem;
+        object-fit: cover;
+      }
+
+      h1 {
+        color: black;
+        background: linear-gradient(45deg, red, blue);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        -moz-text-fill-color: transparent;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    h2 {
+      font-size: 0.75rem;
+      margin-bottom: 2rem;
+      color: darkgray;
+    }
+
+    h1 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 0.75rem;
+      margin-bottom: 2rem;
+      color: darkgray;
+    }
+
+    &.collaboration {
+      display: flex;
+    }
   }
 }
 
@@ -184,56 +225,6 @@ header.header-6 {
           font-size: 0.75rem;
         }
       }
-    }
-  }
-}
-
-.pane.products {
-  background-color: white;
-  padding: 2rem;
-
-  article {
-    width: 25%;
-
-    &:last-of-type {
-      width: 50%;
-
-      img {
-        width: 9rem;
-        margin-right: 2rem;
-        object-fit: cover;
-      }
-
-      h1 {
-        color: black;
-        background: linear-gradient(45deg, red, blue);
-        background-clip: text;
-        -webkit-background-clip: text;
-        -moz-background-clip: text;
-        -moz-text-fill-color: transparent;
-        -webkit-text-fill-color: transparent;
-      }
-    }
-
-    h2 {
-      font-size: 0.75rem;
-      margin-bottom: 2rem;
-      color: darkgray;
-    }
-
-    h1 {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      font-size: 0.75rem;
-      margin-bottom: 2rem;
-      color: darkgray;
-    }
-
-    &.collaboration {
-      display: flex;
     }
   }
 }
