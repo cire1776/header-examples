@@ -92,7 +92,7 @@ header.header-3 {
           color: goldenrod;
         }
 
-        & > li:hover > .submenu {
+        & > li:hover > .pane > .submenu {
           display: block;
           position: absolute;
           background-color: white;

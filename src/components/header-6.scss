@@ -45,21 +45,21 @@ section.header-6 {
       float: right;
       margin-right: 1rem;
 
-      .down {
+      .down-arrow {
         display: none;
       }
 
-      .right {
+      .right-arrow {
         display: inline-block;
       }
     }
 
     &.open {
-      .down {
+      .down-arrow {
         display: inline-block;
       }
 
-      .right {
+      .right-arrow {
         display: none;
       }
     }
@@ -389,13 +389,14 @@ header.header-6 {
       z-index: 100;
 
       li {
-        > span {
+        > a,
+        > div {
           font-size: 1.25rem;
           margin-right: 1rem;
           color: white;
         }
-
-        & > span:hover {
+        & > a:hover,
+        & > div:hover {
           color: goldenrod;
         }
       }

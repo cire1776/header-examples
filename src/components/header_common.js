@@ -11,6 +11,8 @@ import {
   faSearch,
   faChevronDown,
   faChevronRight,
+  faCaretDown,
+  faCaretRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 const LINK_ICONS = {
@@ -81,94 +83,76 @@ export function closePane(event) {
   target.classList.remove("open");
 }
 
-export function generateSubmenu(submenu, classNames) {
-  if (!submenu) {
-    return;
+function togglePane(event) {
+  event.target.parentNode.classList.toggle("open");
+}
+
+function toggleSinglePane(event, targetHeader) {
+  const openItem = targetHeader(event.target);
+
+  if (openItem) {
+    openItem.classList.remove("open");
   }
 
+  togglePane(event);
+}
+
+export function generateChevrons(dualArrows, isCaret) {
   return (
-    <ul key="menu" className={`submenu ${classNames}`}>
-      {submenu.map(([menu, link]) => {
-        return <li key={menu}>{createLink(menu, link)}</li>;
-      })}
-    </ul>
+    <span>
+      {dualArrows ? (
+        <FontAwesomeIcon
+          className="right-arrow"
+          icon={isCaret ? faCaretRight : faChevronRight}
+          size="1x"
+        />
+      ) : (
+        ""
+      )}
+      <FontAwesomeIcon
+        className="down-arrow"
+        icon={isCaret ? faCaretDown : faChevronDown}
+        size="1x"
+      />
+    </span>
   );
 }
 
-export function generateSubmenu2(title, submenu, classNames, dualArrows) {
+export function generateSubmenu(menu, submenu, classNames, shown, chevrons) {
   if (!submenu) {
     return;
   }
 
   if (typeof submenu === "string") {
-    return createLink(title, submenu);
+    return createLink(menu, submenu);
+  }
+
+  if (Array.isArray(submenu)) {
+    return createLink(submenu[0], submenu[1]);
+  }
+
+  if (chevrons === false) {
+    chevrons = () => {};
+  }
+
+  if (!chevrons) {
+    chevrons = () => {
+      return generateChevrons(false);
+    };
   }
 
   return (
     <>
-      {title}{" "}
-      <span>
-        {dualArrows ? (
-          <FontAwesomeIcon
-            className="right-arrow"
-            icon={faChevronRight}
-            size="1x"
-          />
-        ) : (
-          ""
-        )}
-        <FontAwesomeIcon
-          className="down-arrow"
-          icon={faChevronDown}
-          size="1x"
-        />
-      </span>
-      <div
-        role="presentation"
-        onMouseEnter={openPane}
-        onMouseLeave={closePane}
-        className={`pane`}
-      >
-        {submenu.pane}
-      </div>
-    </>
-  );
-}
+      <span>{menu}</span>
 
-export function generateSubmenu3(title, submenu, classNames, dualArrows) {
-  if (!submenu) {
-    return;
-  }
+      {chevrons(shown)}
 
-  if (typeof submenu === "string") {
-    return createLink(title, submenu);
-  }
-
-  return (
-    <>
-      {title}{" "}
-      <span>
-        {dualArrows ? (
-          <FontAwesomeIcon
-            className="right-arrow"
-            icon={faChevronRight}
-            size="1x"
-          />
-        ) : (
-          ""
-        )}
-        <FontAwesomeIcon
-          className="down-arrow"
-          icon={faChevronDown}
-          size="1x"
-        />
-      </span>
       <div role="presentation" className={`pane`}>
-        <ul>
-          {Object.entries(submenu).map(([title, submenu]) => {
+        <ul className={`submenu ${classNames} ${shown ? "shown" : ""}`}>
+          {Object.entries(submenu).map(([menuItem, link]) => {
             return (
-              <li key={title}>
-                {generateSubmenu3(title, submenu, null, true)}
+              <li key={menuItem}>
+                {generateSubmenu(menuItem, link, classNames, shown, chevrons)}
               </li>
             );
           })}
@@ -177,7 +161,40 @@ export function generateSubmenu3(title, submenu, classNames, dualArrows) {
     </>
   );
 }
-export function generatePane(title, submenu, classNames, panes) {
+
+export function generatePane(
+  title,
+  submenu,
+  classNames,
+  pane,
+  requireClick,
+  targetQuery
+) {
+  function mouseOverPane(title, pane) {
+    return (
+      <div role="presentation" onMouseEnter={openPane} onMouseLeave={closePane}>
+        {title} <FontAwesomeIcon icon={faChevronDown} size="1x" />
+        <dialog className={`pane ${title.toLowerCase()}-pane`}>{pane}</dialog>
+      </div>
+    );
+  }
+
+  function clickPane(title, pane, targetQuery) {
+    return (
+      <>
+        <div
+          role="presentation"
+          onClick={(event) => {
+            toggleSinglePane(event, targetQuery);
+          }}
+        >
+          {title}
+        </div>
+        {pane}
+      </>
+    );
+  }
+
   if (!submenu) {
     return;
   }
@@ -186,17 +203,9 @@ export function generatePane(title, submenu, classNames, panes) {
     return createLink(title, submenu);
   }
 
-  return (
-    <>
-      {title} <FontAwesomeIcon icon={faChevronDown} size="1x" />
-      <dialog
-        role="presentation"
-        onMouseEnter={openPane}
-        onMouseLeave={closePane}
-        className={`pane ${title.toLowerCase()}-pane`}
-      >
-        {panes[title]}
-      </dialog>
-    </>
-  );
+  if (requireClick) {
+    return clickPane(title, pane, targetQuery);
+  } else {
+    return mouseOverPane(title, pane);
+  }
 }

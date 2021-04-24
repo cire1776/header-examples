@@ -44,8 +44,7 @@ function HeaderThree({ menus, specialItem, children }) {
 
               return (
                 <li className="main-item" key={`3-${menuItem}`}>
-                  {menuItem}
-                  {generateSubmenu(submenu, "bubbles")}
+                  {generateSubmenu(menuItem, submenu, "bubbles", false, false)}
                 </li>
               );
             })}

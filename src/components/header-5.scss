@@ -131,21 +131,21 @@ section.header-5 {
       }
 
       li {
-        span {
+        & span > svg {
           float: right;
           margin-right: 1rem;
         }
 
-        .down-arrow {
+        span > .down-arrow {
           display: none;
         }
 
-        .right-arrow {
+        span > .right-arrow {
           display: inline-block;
         }
 
         // second level
-        & > .pane {
+        & > div > .pane {
           display: none;
           position: relative;
           left: -1rem;
@@ -194,13 +194,13 @@ section.header-5 {
         left: -1rem;
         padding-left: 1rem;
 
-        .right-arrow {
+        & > span > .right-arrow {
           display: none;
         }
-        .down-arrow {
+        & > span > .down-arrow {
           display: inline-block;
         }
-        & > .pane {
+        & > div > .pane {
           display: block;
           height: auto;
 
@@ -283,7 +283,7 @@ header.header-5 {
 
         li.open {
           padding-bottom: 1rem;
-          & > .pane {
+          & > div > .pane {
             display: block;
             position: absolute;
             top: 2.5rem;

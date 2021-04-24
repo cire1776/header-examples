@@ -1,11 +1,9 @@
 import React, { useRef } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretRight, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 import Hamburger from "./Hamburger";
 
 import "./header2.scss";
-import { createLink } from "./header_common";
+import { createLink, generateSubmenu, generateChevrons } from "./header_common";
 
 const HeaderTwo = ({ menus, socialMenus, children }) => {
   const menuElement2 = useRef(null);
@@ -22,19 +20,6 @@ const HeaderTwo = ({ menus, socialMenus, children }) => {
     menuElement2.current.classList.remove("shown");
   }
 
-  function generateSubmenu(submenu, classNames) {
-    if (!submenu) {
-      return;
-    }
-    return (
-      <ul className={`submenu ${classNames}`}>
-        {submenu.map(([menu, link]) => {
-          return <li key={menu}>{createLink(menu, link)}</li>;
-        })}
-      </ul>
-    );
-  }
-
   function toggleMenus(event) {
     menuElement2.current.classList.toggle("shown");
     return menuElement2.current.classList.contains("shown");
@@ -48,30 +33,11 @@ const HeaderTwo = ({ menus, socialMenus, children }) => {
         <section className="menus" ref={menuElement2}>
           <ul className="main-menu">
             {Object.entries(menus).map(([menu, submenu]) => {
-              if (typeof submenu === "string") {
-                return <li key={menu}>{createLink(menu, submenu)}</li>;
-              }
-
               return (
                 <li key={menu}>
-                  {menu}{" "}
-                  {submenu ? (
-                    <>
-                      <FontAwesomeIcon
-                        className="caret-right"
-                        icon={faCaretRight}
-                        size="1x"
-                      />
-                      <FontAwesomeIcon
-                        className="caret-down"
-                        icon={faCaretDown}
-                        size="1x"
-                      />
-                    </>
-                  ) : (
-                    ""
-                  )}
-                  {generateSubmenu(submenu, "bubbles")}
+                  {generateSubmenu(menu, submenu, "bubbles", false, () => {
+                    return generateChevrons(true, true);
+                  })}
                 </li>
               );
             })}

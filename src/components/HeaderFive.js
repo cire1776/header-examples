@@ -3,9 +3,9 @@ import "./header-5.scss";
 import {
   createLink,
   generatePane,
-  generateSubmenu3,
-  openPane,
-  closePane,
+  generateSubmenu,
+  generateChevrons,
+  getClosest,
 } from "./header_common";
 import Hamburger, { Closeburger } from "../components/Hamburger";
 
@@ -25,7 +25,8 @@ function HeaderFive({
   }
 
   function toggleOpen(event) {
-    event.target.classList.toggle("open");
+    const target = getClosest(event.target, "li");
+    target.classList.toggle("open");
   }
 
   return (
@@ -46,7 +47,9 @@ function HeaderFive({
                   onKeyDown={toggleOpen}
                   key={title}
                 >
-                  {generateSubmenu3(title, submenu, null, true)}{" "}
+                  {generateSubmenu(title, submenu, null, true, () => {
+                    return generateChevrons(true);
+                  })}
                 </li>
               );
             })}
@@ -69,13 +72,14 @@ function HeaderFive({
             <ul className="main-menu">
               {Object.entries(menu).map(([title, submenu]) => {
                 return (
-                  <li
-                    role="presentation"
-                    onMouseEnter={openPane}
-                    onMouseLeave={closePane}
-                    key={title}
-                  >
-                    {generatePane(title, submenu, classNames, panes)}
+                  <li key={title}>
+                    {generatePane(
+                      title,
+                      submenu,
+                      classNames,
+                      panes[title],
+                      false
+                    )}
                   </li>
                 );
               })}

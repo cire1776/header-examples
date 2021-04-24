@@ -6,6 +6,7 @@ import {
   faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 import Hamburger from "./Hamburger";
+import { generateSubmenu } from "../components/header_common";
 import "./header1.scss";
 
 /*
@@ -59,16 +60,9 @@ const HeaderOne = ({ menus, secondary, tertiary, special, children }) => {
     setActiveSubmenu(null);
   }
 
-  function generateSubmenu(submenu, submenuItems, classNames) {
-    if (!submenuItems) {
-      return <></>;
-    }
-    const shown = submenu.toUpperCase() === activeSubmenu;
-
+  function generateChevrons(shown) {
     return (
       <>
-        <span>{submenu}</span>
-
         <FontAwesomeIcon
           // make chevronDown the default
           icon={shown ? faChevronDown : faChevronRight}
@@ -80,13 +74,14 @@ const HeaderOne = ({ menus, secondary, tertiary, special, children }) => {
           size="1x"
           className="expanded-only"
         />
-        <ul className={`submenu ${classNames} ${shown ? "shown" : ""}`}>
-          {submenuItems.map(([menuItem, link]) => {
-            return <li key={menuItem}>{createLink(menuItem, link)}</li>;
-          })}
-        </ul>
       </>
     );
+  }
+
+  function generateSubmenu1(menu, submenu, classNames) {
+    const shown = menu.toUpperCase() === activeSubmenu;
+
+    return generateSubmenu(menu, submenu, classNames, shown, generateChevrons);
   }
 
   function toggleSubmenu(event) {
@@ -134,17 +129,17 @@ const HeaderOne = ({ menus, secondary, tertiary, special, children }) => {
                   </li>
                 );
               }
-
+              const shown = menuName.toUpperCase() === activeSubmenu;
               return (
                 <li className="main-item" key={menuName}>
-                  {generateSubmenu(menuName, submenu, "bubbles")}
+                  {generateSubmenu1(menuName, submenu, "bubbles", shown)}
                 </li>
               );
             })}
           </ul>
           <hr />
           <ul className="simple-menu condensed-only">
-            {tertiary.map(([menuName, link]) => {
+            {Object.entries(tertiary).map(([menuName, link]) => {
               return (
                 <li key={menuName}>
                   <span>{createLink(menuName, link)}</span>

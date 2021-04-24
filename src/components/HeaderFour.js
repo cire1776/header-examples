@@ -15,8 +15,7 @@ function HeaderFour({ children, menus, socialMenu }) {
             {Object.entries(menus).map(([menuItem, submenu]) => {
               return (
                 <li className="main-item" key={`4-${menuItem}`}>
-                  {menuItem}
-                  {generateSubmenu(submenu)}
+                  {generateSubmenu(menuItem, submenu, "", true, false)}
                 </li>
               );
             })}

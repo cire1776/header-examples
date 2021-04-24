@@ -2,7 +2,7 @@ import React from "react";
 import "./header-6.scss";
 import Hamburger, { Closeburger } from "../components/Hamburger";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { createLink } from "../components/header_common";
+import { createLink, generatePane } from "../components/header_common";
 
 import {
   faChevronDown,
@@ -26,20 +26,10 @@ function HeaderSix({ menu, panes, children }) {
     event.target.classList.toggle("open");
   }
 
-  function togglePane(event) {
-    event.target.parentNode.classList.toggle("open");
-  }
-
-  function toggleSinglePane(event) {
-    const openItem = event.target.parentNode.parentNode.querySelector(
-      "header.header-6 li.open"
+  function queryTarget(target) {
+    return target.parentNode.parentNode.querySelector(
+      `header.header-6 li.open`
     );
-
-    if (openItem) {
-      openItem.classList.remove("open");
-    }
-
-    togglePane(event);
   }
 
   return (
@@ -60,12 +50,12 @@ function HeaderSix({ menu, panes, children }) {
                     {title}
                     <span>
                       <FontAwesomeIcon
-                        className="down"
+                        className="down down-arrow"
                         icon={faChevronDown}
                         size="1x"
                       />
                       <FontAwesomeIcon
-                        className="right"
+                        className="right right-arrow"
                         icon={faChevronRight}
                         size="1x"
                       />
@@ -89,10 +79,14 @@ function HeaderSix({ menu, panes, children }) {
             {Object.entries(menu).map(([title, submenu]) => {
               return (
                 <li key={title}>
-                  <span role="presentation" onClick={toggleSinglePane}>
-                    {title}
-                  </span>
-                  {panes[title]}
+                  {generatePane(
+                    title,
+                    submenu,
+                    "",
+                    panes[title],
+                    true,
+                    queryTarget
+                  )}
                 </li>
               );
             })}

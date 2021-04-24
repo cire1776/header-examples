@@ -118,12 +118,14 @@ header.header-2 {
         align-items: center;
         width: 600px;
 
-        .caret-right {
+        .right-arrow {
           display: inline-block;
+          margin-left: 0.25rem;
         }
 
-        .caret-down {
+        .down-arrow {
           display: none;
+          margin-left: 0.25rem;
         }
 
         & > li {
@@ -270,11 +272,11 @@ header.header-2 {
               position: relative;
               top: 2px;
 
-              &.caret-right {
+              &.right-arrow {
                 display: inline-block !important;
               }
 
-              &.caret-down {
+              &.down-arrow {
                 display: none !important;
               }
             }
@@ -295,11 +297,11 @@ header.header-2 {
             & > li:hover {
               color: goldenrod;
 
-              .caret-right {
+              .right-arrow {
                 display: none !important;
               }
 
-              .caret-down {
+              .down-arrow {
                 display: inline-block !important;
               }
             }
